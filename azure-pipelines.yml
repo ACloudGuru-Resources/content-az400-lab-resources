@@ -1,17 +1,13 @@
 trigger:
-- master
+- aks
 
 variables:
   dockerRegistryServiceConnection: 'ACR'
   imageRepository: 'azure-vote-front'
-  containerRegistry: 'anmereugo33.azurecr.io'
+  containerRegistry: '< *** Replace with ACR DNS registry name *** >'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'csacr5d93-auth'
-
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
-  
+  imagePullSecret: 'csacr5d93-auth'  
 
 stages:
 
@@ -21,7 +17,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      name: Default
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -44,7 +40,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy to dev
     pool:
-      vmImage: $(vmImageName)
+      name: Default
     environment: 'dev.default'
     strategy:
       runOnce:
