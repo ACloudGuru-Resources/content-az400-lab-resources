@@ -50,3 +50,5 @@ stages:
 
     - download: current
       artifact: drop
+      
+    < *** Add Task to deploy Azure Web App here *** >
