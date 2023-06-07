@@ -2,7 +2,7 @@ trigger:
 - node-express
 
 pool:
-  vmImage: 'Ubuntu-18.04'
+  name: default
 
 steps:
 - task: NodeTool@0
