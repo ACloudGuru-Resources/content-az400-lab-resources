@@ -15,9 +15,9 @@ steps:
   displayName: 'npm install'
 
 - task: CmdLine@2
- inputs:
-   script: 'sudo apt-get -y install zip'
- displayName: 'zip install'
+  inputs:
+    script: 'sudo apt-get -y install zip'
+  displayName: 'zip install'
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
