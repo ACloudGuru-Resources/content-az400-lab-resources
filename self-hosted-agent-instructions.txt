@@ -1,0 +1,107 @@
+# Self-Hosted Agent configuration instructions:
+
+# Linux Instructions
+# More information can be found here: https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/linux-agent?view=azure-devops
+
+# Navigate to root
+cd ~
+
+# Create a directory called Downloads and navigate to it
+mkdir Downloads && cd Downloads
+
+# Download agent package using download URL
+wget https://vstsagentpackage.azureedge.net/agent/<version_number>/vsts-agent-linux-x64-<version_number>.tar.gz
+
+# Navigate to root
+cd ~
+
+# Create a directory called myagent and navigate to it
+mkdir myagent && cd myagent
+
+# unpack the agent package
+tar zxvf ~/Downloads/vsts-agent-linux-x64-<version_number>.tar.gz
+
+#configure the agent
+./config.sh
+
+# accept the license agreement
+“Y”
+
+# Provide the Azure DevOps Organization URL 
+https://dev.azure.com/<org_name>
+
+# Select Personal Access Token (PAT) as authentication method
+
+“Enter” for Personal Access Token
+
+# Provide PAT value
+<PAT_Token>
+
+# Select “default” agent pool
+“Enter” 
+
+# Select provided agent name
+“Enter” 
+
+# Select “_work” agent folder
+“Enter”
+
+# Run the agent interactively
+./run.sh
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Windows Instructions
+# More information can be found here: https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/windows-agent?view=azure-devops
+
+# Download agent package and copy to agent VM
+# Alternatively, you can run to command below to download the agent package:
+# Invoke-WebRequest -Uri https://vstsagentpackage.azureedge.net/agent/<version_number>/vsts-agent-win-x64-<version_number>.zip -OutFile "$HOME\Downloads\vsts-agent-win-x64-<version_number>.zip"
+
+# Navigate to root of C:\
+cd C:\
+
+# Create a folder named agent and navigate to that folder
+mkdir C:\agent ; cd C:\agent
+
+# unpack the agent package
+Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-<version_number>.zip", "$PWD") 
+
+#configure the agent
+./config.cmd
+
+# Provide the Azure DevOps Organization URL 
+https://dev.azure.com/<org_name>
+
+# Select Personal Access Token (PAT) as authentication method
+
+“Enter”
+
+# Provide PAT value
+<PAT_Token>
+
+# Select “default” agent pool
+“Enter” 
+
+# Select the provided agent name
+“Enter” 
+
+# Select “_work”  for agent folder
+“Enter” 
+
+# Run agent as a service
+“Y”
+
+# Enable SERVICE_SID_TYPE_UNRESTRICTED for agent service
+“Y”
+
+# Select NT AUTHORITY\NETWORK SERVICE  for the service user account
+“Enter” 
+
+# DO NOT prevent service from starting immediately 
+“Enter”
+
+# Optionally, run the agent interactively
+# ./run.cmd
+
+
