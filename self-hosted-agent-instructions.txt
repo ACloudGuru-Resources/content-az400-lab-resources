@@ -31,6 +31,7 @@ tar zxvf ~/Downloads/vsts-agent-linux-x64-<version_number>.tar.gz
 https://dev.azure.com/<org_name>
 
 # Select Personal Access Token (PAT) as authentication method
+# https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/linux-agent?view=azure-devops#authenticate-with-a-personal-access-token-pat
 
 “Enter” for Personal Access Token
 
@@ -74,6 +75,7 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression
 https://dev.azure.com/<org_name>
 
 # Select Personal Access Token (PAT) as authentication method
+# https://learn.microsoft.com/en-us/azure/devops/pipelines/agents/windows-agent?view=azure-devops#authenticate-with-a-personal-access-token-pat
 
 “Enter”
 
